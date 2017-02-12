@@ -1,0 +1,87 @@
+@font-face {
+  font-family: LiDeBiao-Xing;
+  src: url("../font/LiDeBiao-Xing.ttf"); }
+body {
+  background: linear-gradient(45deg, #99ccff, #9966CC);
+  height: 100vh;
+  text-align: center; }
+
+h1 {
+  font-size: 40pt;
+  font-weight: 900;
+  margin-top: 150px;
+  font-family: LiDeBiao-Xing, serif; }
+
+nav {
+  text-align: center; }
+
+.container div input.form-control {
+  background: rgba(241, 241, 241, 0.1);
+  font-family: LiDeBiao-Xing, serif;
+  font-size: 14pt;
+  display: inline;
+  border: 2px white solid;
+  color: #000; }
+  .container div input.form-control::placholder {
+    color: #000000; }
+  .container div input.form-control::-moz-placeholder {
+    color: #000000; }
+  .container div input.form-control::-webkit-input-placeholder {
+    color: #000000; }
+
+.container button {
+  font-family: LiDeBiao-Xing, serif;
+  font-size: 14pt;
+  background: transparent;
+  border: 2px rgba(242, 242, 242, 0.5) solid; }
+  .container button:hover {
+    cursor: pointer;
+    background: rgba(242, 242, 242, 0.5); }
+
+.pagination .page-link {
+  background: transparent;
+  color: white;
+  font-family: LiDeBiao-Xing, serif;
+  font-size: 14pt;
+  padding: 8px; }
+  .pagination .page-link:hover {
+    cursor: pointer;
+    background: rgba(242, 242, 242, 0.5); }
+  .pagination .page-link.active {
+    background: rgba(242, 242, 242, 0.7); }
+
+#regen {
+  margin-top: 2ex; }
+
+#copy {
+  width: 38px;
+  height: 38px;
+  padding: 0; }
+  #copy img {
+    width: 20px;
+    height: 20px;
+    display: inline; }
+
+#from, #writer {
+  margin-top: 10px; }
+
+#from, #writer {
+  width: 120px; }
+
+#sentence {
+  max-width: 240px; }
+
+@media screen and (min-width: 736px) {
+  #from, #writer {
+    width: 200px; }
+
+  #sentence {
+    max-width: 400px; } }
+@media screen and (min-width: 1023px) {
+  #from, #writer {
+    width: 230px; }
+
+  #sentence {
+    max-width: 600px; } }
+
+/*# sourceMappingURL=stylesheet.css.map */

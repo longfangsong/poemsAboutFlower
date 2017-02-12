@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>飞花令</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static "stylesheet/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "stylesheet/stylesheet.css" %}">
+</head>
+<body>
+<div class="container">
+  <h1>飞花令</h1>
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a id="0" class="page-link generate-new">壹</a></li>
+    <li class="page-item"><a id="1" class="page-link generate-new">贰</a></li>
+    <li class="page-item"><a id="2" class="page-link generate-new">叁</a></li>
+    <li class="page-item"><a id="3" class="page-link generate-new">肆</a></li>
+    <li class="page-item"><a id="4" class="page-link generate-new">伍</a></li>
+    <li class="page-item"><a id="5" class="page-link generate-new">陆</a></li>
+    <li class="page-item"><a id="6" class="page-link generate-new active">柒</a></li>
+  </ul>
+  <label for="sentence" class="sr-only">诗句</label>
+  <div class="justify-content-center">
+    <input type="text" class="form-control" id="sentence" readonly placeholder="春城无处不飞花">
+    <button class="btn" id="copy" data-clipboard-action="copy" data-clipboard-target="#sentence"><img
+            src="{% static "img/copy.svg" %}"></button>
+  </div>
+  <label for="sentence" class="sr-only">诗句</label>
+  <div class="justify-content-center">
+    <input type="text" class="form-control" id="from" readonly placeholder="">
+    <input type="text" class="form-control" id="writer" readonly placeholder="">
+  </div>
+  <button class="btn justify-content-center" id="regen">重新生成</button>
+</div>
+<script src="{% static "js/jquery.js" %}"></script>
+<script src="{% static "js/clipboard.min.js" %}"></script>
+<script>
+    $(function () {
+        new Clipboard('#copy');
+    });
+    $(".generate-new").click(function () {
+        $.post('generate-' + $(this).attr('id'), [{
+            name: "csrfmiddlewaretoken",
+            value: "{{ csrf_token }}"
+        }], $.proxy(function (ret) {
+            $(".active").removeClass('active');
+            $("#sentence").attr('placeholder', '').val(ret.sentence);
+            $("#from").val(ret.poem_name);
+            $("#writer").val(ret.writer);
+            $(this).addClass('active');
+        }, $(this)));
+    });
+    $("#regen").click(function () {
+        $.post('generate-' + $('.active').attr('id'), [{
+            name: "csrfmiddlewaretoken",
+            value: "{{ csrf_token }}"
+        }], function (ret) {
+            $("#sentence").attr('placeholder', '').val(ret.sentence);
+            $("#from").val(ret.poem_name);
+            $("#writer").val(ret.writer);
+        })
+    });
+</script>
+</body>
+</html>
