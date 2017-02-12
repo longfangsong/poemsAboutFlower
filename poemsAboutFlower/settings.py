@@ -24,7 +24,9 @@ SECRET_KEY = '9h6%kh&38uxcvnh2jer#!woixa+a$c3tf%@b3x%nc(n&!v5hnz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['daoapp.io']
+ALLOWED_HOSTS = [
+    # 'daoapp.io'
+]
 
 # Application definition
 
