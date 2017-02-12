@@ -8,4 +8,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 RUN pip3 install -r requirements.txt
 RUN python3 manage.py migrate --noinput
 RUN python3 manage.py collectstatic --noinput
-CMD nginx & gunicorn schoolProject.wsgi
+CMD nginx & gunicorn poemsAboutFlower.wsgi
